@@ -1,48 +1,48 @@
-# Twitter Sentiment Analysis 🐦
+# Bank Marketing Prediction with Decision Trees 🏦
 
-Sentiment analysis on a Twitter dataset, built as Task 4 of my Prodigy InfoTech internship. The goal: clean the data and explore how people feel about different topics and brands.
+A machine learning project that predicts whether a customer will subscribe to a term deposit, built as Task 3 of my Prodigy InfoTech internship. It covers exploring the data, cleaning it, and training Decision Tree classifiers.
 
 ## 🛠️ Technologies
 - **Python**
 - **Pandas** and **NumPy** for data handling
 - **Matplotlib** and **Seaborn** for charts
-- **WordCloud** for text visuals
+- **Scikit-learn** for encoding, modelling, and evaluation
 - **Google Colab / Jupyter Notebook**
 
 ## ✨ Features
-- Data cleaning: removed missing values and duplicate rows
-- Topic distribution chart showing which topics appear most
-- Sentiment distribution as a count plot and a pie chart
-- Topic vs sentiment comparison using a grouped count plot
-- Separate bar charts of the top 5 topics for Negative, Positive, Neutral, and Irrelevant sentiment
-- Sentiment breakdown for a single topic ("Google")
-- Message length analysis with a histogram and a boxplot by sentiment
-- Heatmap of Topic vs Sentiment
-- Word cloud of topic names
+- Data checks: shape, data types, duplicates, and missing values
+- Histograms of numeric columns and count plots of categorical columns
+- Boxplots to spot outliers, with IQR-based outlier handling
+- Correlation heatmap to find highly correlated features
+- Label encoding of categorical columns
+- Two Decision Tree models, one using Gini and one using Entropy
+- Evaluation with accuracy, confusion matrix, and classification report
+- Tree diagrams to show how the model makes decisions
 
 ## 🔄 The Process
-1. Loaded `twitter_training.csv` and added column names (`ID`, `Topic`, `Sentiment`, `Text`)
-2. Inspected the shape, data types, and unique sentiment labels
-3. Cleaned the data by dropping nulls and duplicates
-4. Plotted topic and sentiment distributions
-5. Compared sentiment across topics, including the top 5 per sentiment
-6. Added a `msg_len` column and compared message length across sentiments
-7. Built a heatmap and word cloud to summarise the findings
+1. Loaded `bank-additional.csv` and renamed the target column `y` to `deposit`
+2. Checked structure, duplicates, and missing values
+3. Visualised numeric and categorical features
+4. Handled outliers in `age`, `campaign`, and `duration` using the IQR method
+5. Checked correlations and found highly related features (`emp.var.rate`, `euribor3m`, `nr.employed`)
+6. Encoded categorical data and split it into 75% training and 25% testing
+7. Trained two Decision Trees and compared their scores
+8. Evaluated the results and plotted the trees
 
 ## 📚 What I Learned
-- **Data Cleaning:** Checking for nulls and duplicates before any analysis.
-- **Categorical Analysis:** Using `groupby`, `value_counts`, and `crosstab` to compare categories.
-- **Seaborn:** Building count plots, bar plots, boxplots, and heatmaps, and choosing colour palettes that fit the data.
-- **Feature Engineering:** Creating a new column (`msg_len`) to find patterns in the text.
-- **Choosing Charts:** Pie charts for proportions, boxplots for spread, heatmaps for two-way comparisons.
-- **Reading Sentiment:** Turning raw tweets into insights about which topics get positive or negative reactions.
+- **EDA First:** Looking at distributions, outliers, and correlations before building any model.
+- **Outliers:** Using the IQR rule and boxplots to find and handle extreme values.
+- **Encoding:** Turning text categories into numbers with `LabelEncoder` so models can use them.
+- **Decision Trees:** How `criterion`, `max_depth`, and `min_samples_split` change the tree.
+- **Overfitting:** Comparing training and testing scores to see if a model memorises the data.
+- **Evaluation:** Reading a confusion matrix and classification report instead of relying on accuracy alone.
 
 ## 📁 Files
-- `twitter_training.csv`: the dataset
-- `prodigy_task_4.py`: the analysis script
+- `bank-additional.csv`: the dataset
+- `prodigy_3.py`: the analysis and model script
 
 ## ▶️ How to Run
 ```bash
-pip install pandas numpy matplotlib seaborn wordcloud
-python prodigy_task_4.py
+pip install pandas numpy matplotlib seaborn scikit-learn
+python prodigy_3.py
 ```
